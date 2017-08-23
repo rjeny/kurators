@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block tittle %} Моя страница {% endblock %}
+{% block content %}
+    Пока что я никто
+    {{ request.user.email }}
+{% endblock %}
+
+{% block moreJS %}
+{% endblock %}

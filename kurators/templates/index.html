@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/kurators.css' %}">
+    {% block moreCss %}{% endblock %}
+
+    <title>{% block title %} Кураторы СПХФА {% endblock %}</title>
+
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-5 text-center align-self-center">
+            <img src="{% static 'images/logo_full.png' %}" width="200px" height="200px">
+            <h1>Кураторы СПХФА</h1>
+            <form>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                           placeholder="E-mail">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                           placeholder="Пароль">
+                </div>
+                <button type="submit" class="btn btn-outline-orange btn-lg">Войти</button>
+            </form>
+            <br/>
+            <button type="button" class="btn btn-outline-success btn-lg">Похвалить</button>
+            <button type="button" class="btn btn-outline-danger btn-lg">Пожаловаться</button>
+        </div>
+    </div>
+</div>
+</body>

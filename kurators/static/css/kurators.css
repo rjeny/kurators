@@ -1,0 +1,14 @@
+body {
+  background: #f0f0f0; }
+
+.btn-outline-orange {
+  background-color: transparent;
+  border: 1px solid #FA9F12;
+  color: #FA9F12; }
+
+.btn-outline-orange:hover {
+  background-color: #FA9F12;
+  border: 1px solid #FA9F12;
+  color: #fff; }
+
+/*# sourceMappingURL=kurators.css.map */

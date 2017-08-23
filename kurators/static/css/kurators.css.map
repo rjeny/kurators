@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,IAAK;EACH,UAAU,EAJO,OAAO;;AAO1B,mBAAoB;EAClB,gBAAgB,EAAE,WAAW;EAC7B,MAAM,EAAE,iBAAiB;EACzB,KAAK,EATG,OAAO;;AAYjB,yBAA0B;EACxB,gBAAgB,EAbR,OAAO;EAcf,MAAM,EAAE,iBAAiB;EACzB,KAAK,EAAE,IAAI",
+"sources": ["kurators.scss"],
+"names": [],
+"file": "kurators.css"
+}

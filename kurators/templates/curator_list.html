@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block tittle %} Список кураторских часов {% endblock %}
+{% block content %}
+    <h1>Моя группа</h1>
+    <table class="table table-responsive table-hover">
+        <thead class="thead-default">
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for curator in object_list %}
+            <tr>
+                <td>
+                    {{ curator.second_name }}
+                </td>
+                <td>
+                    {{ curator.first_name }}
+                </td>
+                <td>
+                    {{ curator.middle_name }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
