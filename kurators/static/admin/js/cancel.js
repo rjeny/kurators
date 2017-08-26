@@ -1,9 +1,1 @@
-(function($) {
-    'use strict';
-    $(function() {
-        $('.cancel-link').click(function(e) {
-            e.preventDefault();
-            window.history.back();
-        });
-    });
-})(django.jQuery);
+/home/rjeny/Projects/kurators/env/lib/python3.5/site-packages/django/contrib/admin/static/admin/js/cancel.js

@@ -16,3 +16,35 @@ body {
   border: 1px solid #FA9F12;
   color: #fff;
 }
+
+tbody td {
+  background: #fff;
+}
+
+.table-orange {
+  margin: 10px 0;
+  background: #fff;
+  box-shadow: 3px 7px 6px #aaa;
+  border-left: 1px solid $orange;
+
+  thead {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1em;
+    color: #333;
+
+    th {
+      border-left: 2px solid #ddd;
+    }
+  }
+}
+
+.cur_list {
+    background: #fff;
+    padding: 15px;
+}
+
+.tab-content {
+    padding-left: 15px;
+    border-left: 1px solid #aaa;
+}

@@ -1,26 +1,33 @@
 {% extends 'base.html' %}
 {% block tittle %} Список кураторских часов {% endblock %}
 {% block content %}
-    <h1>Моя группа</h1>
-    <table class="table table-responsive table-hover">
-        <thead class="thead-default">
+    <h1>Кураторы 2017/2018</h1>
+    {% if perms.kurator_base.can_add_curator %}
+        <a class="btn btn-outline-success" href="{% url 'curators.add' %}">Добавить куратора</a>
+    {% endif %}
+    <table class="table table-responsive table-hover table-orange">
+        <thead>
         <tr>
             <th>Фамилия</th>
             <th>Имя</th>
-            <th>Отчество</th>
+            <th>Группа</th>
+            <th>Телефон</th>
         </tr>
         </thead>
         <tbody>
         {% for curator in object_list %}
             <tr>
                 <td>
-                    {{ curator.second_name }}
+                    {{ curator.last_name }}
                 </td>
                 <td>
                     {{ curator.first_name }}
                 </td>
                 <td>
-                    {{ curator.middle_name }}
+                    {{ curator.groupName }}
+                </td>
+                <td>
+                    {{ curator.phone }}
                 </td>
             </tr>
         {% endfor %}

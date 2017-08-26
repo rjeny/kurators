@@ -22,8 +22,11 @@ urlpatterns = [
     url(r'^$', views.MainPage.as_view(), name='index'),
     url(r'^my/', views.MyPage.as_view(), name='mypage'),
     url(r'^kch/', views.CursList.as_view(), name='curs'),
-    url(r'^group/', views.GroupList.as_view(), name='group'),
-    url(r'^curators/', views.CuratorList.as_view(), name='curators'),
+    url(r'^group/$', views.GroupList.as_view(), name='group'),
+    url(r'^groups/$', views.GroupsList.as_view(), name='groups'),
+    url(r'^groups/add/$', views.GroupsAdd.as_view(), name='groups.add'),
+    url(r'^curators/$', views.CuratorList.as_view(), name='curators'),
+    url(r'^curators/add/$', views.CuratorAdd.as_view(), name='curators.add'),
     url(r'^rating/', views.get_rating, name='rating'),
     url(r'^api/cur/get/', views.get_curs_manual)
 ]

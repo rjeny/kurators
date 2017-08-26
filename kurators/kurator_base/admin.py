@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Curator, CurTime
+from .models import Curator, CurTime, StudentGroup
 # Register your models here.
 
 
@@ -10,4 +10,9 @@ class CuratorAdmin (admin.ModelAdmin):
 
 @admin.register(CurTime)
 class CurTimeAdmin (admin.ModelAdmin):
+    pass
+
+
+@admin.register(StudentGroup)
+class GroupAdmin (admin.ModelAdmin):
     pass

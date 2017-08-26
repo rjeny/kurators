@@ -5,7 +5,8 @@ from django.http import HttpResponse
 from django.views.decorators.http import require_GET
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .models import CurTime, Curator, Student, Group
+from django.urls import reverse
+from .models import CurTime, Curator, Student, StudentGroup
 from .forms import CurResultForm
 import markdown
 
@@ -20,6 +21,15 @@ class CuratorList (ListView):
     template_name = "curator_list.html"
 
 
+class CuratorAdd (CreateView):
+    model = Curator
+    template_name = "curator_add.html"
+    fields = ['last_name', 'first_name', 'middle_name', 'groupName', 'email']
+
+    def get_success_url(self):
+        return reverse('curators')
+
+
 class MyPage (TemplateView):
     template_name = "mypage.html"
 
@@ -27,6 +37,20 @@ class MyPage (TemplateView):
 class GroupList (ListView):
     model = Student
     template_name = "group_list.html"
+
+
+class GroupsList (ListView):
+    model = StudentGroup
+    template_name = "groups_list.html"
+
+
+class GroupsAdd (CreateView):
+    model = StudentGroup
+    template_name = "curator_add.html"
+    fields = ['faculty', 'number', 'curator']
+
+    def get_success_url(self):
+        return reverse('groups')
 
 
 class CursList (ListView):

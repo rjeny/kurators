@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block tittle %} Список кураторских часов {% endblock %}
+{% block content %}
+    <h1>Добавить объект</h1>
+
+    <form action="" method="post">{% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+        <button type="submit" class="btn btn-success">Добавить</button>
+    {% endbuttons %}
+    </form>
+{% endblock %}

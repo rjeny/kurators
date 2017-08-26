@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block tittle %} Список кураторских часов {% endblock %}
+{% block content %}
+    <h1>Группы</h1>
+    {% if perms.kurator_base.can_add_group %}
+        <a class="btn btn-outline-success" href="{% url 'groups.add' %}">Добавить группу</a>
+    {% endif %}
+    <table class="table table-responsive table-hover text-center table-orange">
+        <thead>
+        <tr>
+            <th width="100px">Факультет</th>
+            <th width="100px">Номер</th>
+            <th>Куратор</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for student_group in object_list %}
+            <tr>
+                <td>{{ student_group.faculty }}</td>
+                <td>{{ student_group.number }}</td>
+                <td class="text-left">
+                    <a tabindex="0"
+                       data-toggle="popover" data-trigger="focus" title="{{ student_group.curator.phone }}"
+                       data-content="{{ student_group.curator.phone }}">
+                        {{ student_group.curator.last_name }} {{ student_group.curator.first_name }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block moreJS %}
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+{% endblock %}

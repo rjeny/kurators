@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -27,6 +26,55 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Internationalization
+# https://docs.djangoproject.com/en/1.11/topics/i18n/
+
+LANGUAGE_CODE = 'ru-ru'
+
+TIME_ZONE = 'Europe/Moscow'
+
+USE_TZ = False
+
+USE_I18N = True
+
+USE_L10N = True
+
+# Default content type and charset to use for all HttpResponse objects, if a
+# MIME type isn't manually specified. These are used to construct the
+# Content-Type header.
+DEFAULT_CONTENT_TYPE = 'text/html'
+DEFAULT_CHARSET = 'utf-8'
+
+# Encoding of files read from disk (template and initial SQL files).
+FILE_CHARSET = 'utf-8'
+
+# The email backend to use. For possible shortcuts see django.core.mail.
+# The default is to use the SMTP backend.
+# Third-party backends can be specified by providing a Python path
+# to a module that defines an EmailBackend class.
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Host for sending email.
+EMAIL_HOST = 'localhost'
+
+# Port for sending email.
+EMAIL_PORT = 25
+
+# Whether to send SMTP 'Date' header in the local time zone or in UTC.
+EMAIL_USE_LOCALTIME = False
+
+# Optional SMTP authentication information for EMAIL_HOST.
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+EMAIL_SSL_CERTFILE = None
+EMAIL_SSL_KEYFILE = None
+EMAIL_TIMEOUT = None
+
+# Whether to prepend the "www." subdomain to URLs that don't have it.
+PREPEND_WWW = False
+
 
 # Application definition
 
@@ -37,7 +85,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'kurator_base'
+    'kurator_base',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -103,28 +152,23 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.11/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+STATIC_ROOT = ''
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = '/home/rjeny/Projects/kurators/kurators/static/'
-STATICFILES_DIRS = [
-    '/home/rjeny/Projects/kurators/kurators/static/'
-]
+
+STATICFILES_DIRS = ( os.path.join('static'), )
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+print(STATIC_ROOT)
+
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/rjeny/Projects/kurators/kurators/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

@@ -2,7 +2,7 @@
 {% block tittle %} Список кураторских часов {% endblock %}
 {% block content %}
     <h1>Кураторские часы</h1>
-    <div class="row">
+    <div class="row cur_list">
         <div class="col-4">
             <div class="list-group" id="list-tab" role="tablist">
                 {% for kch in object_list %}
@@ -17,7 +17,7 @@
                 {% for kch in object_list %}
                     <div class="tab-pane fade {% if forloop.counter == 1 %}show active{% endif %}" id="kch-{{ kch.id }}"
                          role="tabpanel" aria-labelledby="kch-{{ kch.id }}-list">
-                        <button type="button" class="btn btn-outline-primary"
+                        <button type="button" class="btn btn-outline-orange"
                                 data-toggle="modal" data-target="#manualModal" data-cur="{{ kch.id }}">
                             Инструкция
                         </button>
