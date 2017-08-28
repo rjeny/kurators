@@ -18,10 +18,10 @@
         {% for curator in object_list %}
             <tr>
                 <td>
-                    {{ curator.last_name }}
+                    {{ curator.user.last_name }}
                 </td>
                 <td>
-                    {{ curator.first_name }}
+                    {{ curator.user.first_name }}
                 </td>
                 <td>
                     {{ curator.groupName }}

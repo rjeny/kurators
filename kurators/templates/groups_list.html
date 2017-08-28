@@ -20,9 +20,9 @@
                 <td>{{ student_group.number }}</td>
                 <td class="text-left">
                     <a tabindex="0"
-                       data-toggle="popover" data-trigger="focus" title="{{ student_group.curator.phone }}"
+                       data-toggle="popover" data-trigger="focus" title="Телефон: {{ student_group.curator.phone }}"
                        data-content="{{ student_group.curator.phone }}">
-                        {{ student_group.curator.last_name }} {{ student_group.curator.first_name }}
+                        {{ student_group.curator.user.last_name }} {{ student_group.curator.user.first_name }}
                     </a>
                 </td>
             </tr>

@@ -1,0 +1,24 @@
+{
+  "name": "kurators",
+  "version": "0.0.1",
+  "description": "SPCPA kurators site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjeny/kurators.git"
+  },
+  "keywords": [
+    "kurator",
+    "django",
+    "site"
+  ],
+  "author": "rjeny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjeny/kurators/issues"
+  },
+  "homepage": "https://github.com/rjeny/kurators#readme"
+}

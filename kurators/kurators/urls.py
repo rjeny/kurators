@@ -21,12 +21,16 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.MainPage.as_view(), name='index'),
     url(r'^my/', views.MyPage.as_view(), name='mypage'),
-    url(r'^kch/', views.CursList.as_view(), name='curs'),
+    url(r'^kch/$', views.CursList.as_view(), name='curs'),
+    url(r'^kch/done/(?P<curs>.*)$', views.CursResult.as_view(), name='curs.done'),
     url(r'^group/$', views.GroupList.as_view(), name='group'),
+    url(r'^group/add/$', views.GroupAdd.as_view(), name='group.add'),
     url(r'^groups/$', views.GroupsList.as_view(), name='groups'),
     url(r'^groups/add/$', views.GroupsAdd.as_view(), name='groups.add'),
     url(r'^curators/$', views.CuratorList.as_view(), name='curators'),
     url(r'^curators/add/$', views.CuratorAdd.as_view(), name='curators.add'),
     url(r'^rating/', views.get_rating, name='rating'),
-    url(r'^api/cur/get/', views.get_curs_manual)
+    url(r'^api/cur/get/$', views.get_curs_manual),
+    url(r'^api/group/add/$', views.save_students, name='api.students.add'),
+    url(r'^api/group/list/$', views.list_students, name='api.students.list')
 ]

@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block tittle %} Списоки группы {% endblock %}
+{% block content %}
+    <h1>Редактирование группы
+        <select class="custom-select" id="groupName">
+            {% for student_group in student_groups %}
+                <option value="{{ student_group.id }}">{{ student_group.faculty }}-{{ student_group.number }}</option>
+            {% endfor %}
+        </select>{{ groupName }}
+    </h1>
+    {% csrf_token %}
+    <table class="table table-responsive table-hover table-orange">
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Телефон</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <button class="btn btn-outline-orange" id="addStudent">+ добавить студента</button>
+    <button class="btn btn-outline-success" id="saveStudents">сохранить</button>
+{% endblock %}
+
+{% block moreJS %}
+    <script type="text/javascript">
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", $('input[name="csrfmiddlewaretoken"]').val());
+            }
+        });
+
+        function loadEnv(group_id) {
+            $('tbody').html('');
+            $.get('{% url 'api.students.list' %}', {
+                group_id: group_id
+            }).done(function (response) {
+                console.log(response);
+                let students = response.data;
+                for (let student of students) {
+                    $('tbody').append(`
+                    <tr data-id="${ student.id }">
+                        <td>${student.first_name}</td>
+                        <td>${student.last_name}</td>
+                        <td>${student.phone}</td>
+                    </tr>
+                    `)
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            loadEnv($('#groupName').val())
+        });
+
+        $('#addStudent').on('click', function () {
+            $('tbody').append('<tr class="new-student"><td><input name="first_name"/></td><td><input name="last_name"/></td><td><input name="phone"/></td></tr>');
+            $('tbody tr:last input:first').focus();
+        });
+
+        $('#groupName').on('change', function () {
+             loadEnv($(this).val());
+        });
+
+        $('#saveStudents').on('click', function () {
+            let $button = $(this);
+            if ($button.hasClass('loader')) {
+                return 0;
+            }
+
+            $button.addClass('loader').html('Отправка данных...');
+
+            let students = [];
+            $('tbody .new-student').each(function () {
+                let new_student = {
+                    first_name: $(this).find('input[name="first_name"]').val(),
+                    last_name: $(this).find('input[name="last_name"]').val(),
+                    phone: $(this).find('input[name="phone"]').val()
+                };
+                if (new_student.first_name || new_student.last_name || new_student.phone) {
+                    students.push(JSON.stringify(new_student));
+                }
+            });
+
+            let request = {
+                group_id: $('#groupName').val(),
+                students: students
+            };
+
+            console.log(request);
+
+            $.post('{% url 'api.students.add' %}', request)
+                .done(function (response) {
+                    $button.removeClass('loader').html('Сохранить');
+                    if (response.status === 'OK') {
+
+                        $('tbody .new-student input').each(function () {
+                            $(this).parent().html($(this).val());
+                        });
+                         $('tbody .new-student').removeClass('new-student');
+
+                        bs.runAlert({
+                            header: 'Поздравляю',
+                            msg: 'Студенты группы ' + $('#groupName option:selected').html() + ' успешно сохранены',
+                            type: 'success',
+                            timeout: 4000
+                        });
+                    } else if (response.status === 'error' && response.hasOwnProperty('error')) {
+                        bs.runAlert({
+                            msg: response.error,
+                            type: 'danger'
+                        });
+                    }
+                });
+        });
+    </script>
+{% endblock %}

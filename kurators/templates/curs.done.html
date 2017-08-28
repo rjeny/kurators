@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load bootstrap4 %}
+
+{% block tittle %} Отчёт о кураторском чаме {% endblock %}
+{% block moreCss %}
+    <link rel="stylesheet" href="{% static 'css/datepicker.css' %}">
+{% endblock %}
+{% block content %}
+    <h1>Отчёт о выполненном кураторском часе</h1>
+
+    <form action="" method="post">{% csrf_token %}
+        {% bootstrap_form form %}
+
+        <div class="form-group">
+            <label for="id_students_count">Кол-во студентов</label>
+            <select id="id_students_count" class="form-control custom-select">
+                {% for number in students_count %}
+                <option>{{ number }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="students-qual">Оценки студентов</label>
+            <div id="students-qual-group">
+                <div class="alert alert-danger" role="alert">
+                    Введите кол-во студентов, чтобы получить доступ
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="students-qual">Оценки внутригрупповые</label>
+            <div id="students-qual-in-group">
+                <div class="alert alert-danger" role="alert">
+                    Введите кол-во студентов, чтобы получить доступ
+                </div>
+            </div>
+        </div>
+
+        {% buttons %}
+            <button type="submit" class="btn btn-success">Добавить</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}
+
+{% block moreJS %}
+    <script src="{% static 'js/avgcalculator.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap-datepicker.ru.js' %}" charset="UTF-8"></script>
+    <script>
+        $('.datepicker').datepicker();
+    </script>
+{% endblock %}

@@ -48,3 +48,43 @@ tbody td {
     padding-left: 15px;
     border-left: 1px solid #aaa;
 }
+
+.students-qual-object {
+  width: 30px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.students-qual-object.is-invalid {
+  border: 1px solid #DC3545;
+}
+
+.students-qual-object.is-invalid:focus,
+.students-qual-object.is-invalid:active
+{
+  border: 1px solid #DC3545;
+}
+
+.clear-block {
+  color: #1e7e34;
+  display: block;
+}
+
+.new-student {
+  td {
+    padding: 0;
+    margin: 0;
+  }
+
+  input {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    border: 2px dotted #aaa;
+  }
+}
+
+h1 .custom-select{
+  font-size: 20px;
+}

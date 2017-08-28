@@ -21,7 +21,7 @@
                                 data-toggle="modal" data-target="#manualModal" data-cur="{{ kch.id }}">
                             Инструкция
                         </button>
-                        <button type="button" class="btn btn-success">Я провел</button><br/>
+                        <a type="button" class="btn btn-success" href="{% url 'curs.done' curs=kch.id %}">Я провел</a><br/>
                         {{ kch.desc }}
                     </div>
                 {% endfor %}
